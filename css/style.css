@@ -1,0 +1,34 @@
+/* stylesheet for demo and examples */
+
+@import url(http://fonts.googleapis.com/css?family=Lobster+Two:700italic,700);
+@import url(http://fonts.googleapis.com/css?family=Oswald:300);
+
+#examples{
+	background-color: #409EFF;
+	overflow: hidden;
+}
+
+.content{
+	overflow: auto;
+	position: relative;
+	padding: 20px;
+	margin: 10px;
+	max-width: 97%;
+	height: 400px;
+	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;
+}
+
+.content.hidden{ display: none; }
+
+.content.light{
+	background-color: #ddd;
+	color: #333;
+}
+
+@media only screen and (min-width: 1229px){
+	.showcase .horizontal-images.content{ width: 1060px; }
+}
+
+@media only screen and (min-width: 1629px){
+	.showcase .horizontal-images.content{ width: 700px; }
+}
