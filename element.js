@@ -24,12 +24,6 @@
      return postDate;
    }
 
-  new Vue({
-    el: '#app',
-    data: function() {
-      return { visible: false }
-    }
-  })
 
   new Vue({
     el:'#tishi',
@@ -106,7 +100,7 @@
               this.sTime=val;//这个sTime是在data中声明的，也就是v-model绑定的值
               var starttime=fermitTime(val[0]);
               var endtime=fermitTime(val[1])
-              console.log(starttime+'---'+endtime)
+              console.log(starttime+'至'+endtime)
           }
     },
     data() {

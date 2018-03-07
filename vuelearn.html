@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <script src="http://static.runoob.com/assets/vue/1.0.11/vue.min.js"></script>
+
+    <style type="text/css">
+        .active{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+        .text-danger{
+            background-color: gray;
+        }
+        .err-danger{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+    </div>
+
+    <div id="app1">
+        <span v-bind:title='message'>停留</span>
+    </div>
+    {#  #}
+
+    <div id="app2">
+        <p v-if='see'>看见</p>
+    </div>
+
+    <div id="app3">
+        <ol>
+            <li v-for='todo in todos'>
+                {{todo.text}}
+            </li>
+        </ol>
+    </div>
+
+    <div id="app4">
+        <p>{{message}}</p>
+        <button v-on:click='reverseMessage'>逆转单词</button>
+    </div>
+
+    <div id="app5">
+        <p>{{message}}</p>
+        <input  v-model='message' type="" name="">
+    </div>
+
+    <div id='app6'>
+        <ol>
+            <todo-item
+                v-for='item in groceryList'
+                v-bind:todo='item'
+                v-bind:key='item.id'
+            ></todo-item>
+        </ol>
+    </div>
+
+    <div id="app7">
+        <div v-bind:class="{active:isActive}"></div>
+    </div>
+
+    <div id="app8">
+        <div v-bind:class="classObject"></div>
+    </div>
+
+    <div id="app9">
+        <div v-bind:class='[activeClass,errorClass]'></div>
+    </div>
+
+    <div id="app10">
+        <button v-on:click='counter += 1'><p>被点击了{{counter}}次</p></button>
+    </div>
+
+    <div id="app11">
+        <button v-on:click="say('hi')">hi</button>
+        <button v-on:click="say('why')">why</button>
+    </div>
+
+    <div id="app12">
+        <input type="checkbox" id="checkbox"  v-model="checked" name="">
+        <label for="checkbox">{{checked}}</label>
+        <br/>
+        复选框:
+        <input type="checkbox" id="baidu" value="baidu" v-model="checkedNames" name="">
+        <label for="baidu">baidu</label>
+        <input type="checkbox" id="taobao" value="taobao" v-model="checkedNames" name="">
+        <label for="taobao">taobao</label>
+        <input type="checkbox" id="alibb" value="alibb" v-model="checkedNames" name="">
+        <label for="alibb">alibb</label>
+        <br/>
+        <span>选择的值为：{{checkedNames}}</span>
+    </div>
+
+    <div id="app13">
+        <myself></myself>
+    </div>
+
+    <div id="app14">
+        <myset></myset>
+    </div>
+
+    <div id="app15">
+        <child message='vuevuevuevuevue'></child>
+    </div>
+
+    <div id="app16">
+        <div>
+            <input type="" v-model="parentMsg" name="">
+            <br>
+            <child v-bind:message="parentMsg"></child>
+        </div>
+    </div>
+
+    <div id="app17">
+        <ol>
+            <todo-item v-for="item in sites" v-bind:todo="item"></todo-item>
+        </ol>
+    </div>
+
+    <div id="app18">
+        <div id="counter-event-example">
+            <p>{{total}}</p>
+            <button-counter v-on:increment="incrementTotal"></button-counter>
+            <button-counter v-on:increment="incrementTotal"></button-counter>
+        </div>
+    </div>
+
+    <input type="text" class="search" placeholder="请输入" @keyup.enter="search" v-model="searchTx">
+</body>
+
+<script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            message:'绑定消息'
+        }
+    })
+
+    new Vue({
+        el:'#app1',
+        data:{
+            message:'页面加载于'+ new Date().toLocaleString()
+        }
+    })
+
+    new Vue({
+        el:'#app2',
+        data:{
+            see:true
+            // see:false
+        }
+    })
+
+    new Vue({
+        el:'#app3',
+        data:{
+            todos:[
+                {text:'aaa'},
+                {text:'bbb'},
+                {text:'ccc'}
+            ]
+        }
+    })
+
+    new Vue({
+        el:'#app4',
+        data:{
+            message:'look'
+        },
+        methods:{
+           reverseMessage:function (argument) {
+               this.message=this.message.split('').reverse().join('')
+           }
+        }
+    })
+
+    // 双向绑定
+    new Vue({
+        el:'#app5',
+        data:{
+            message:'请输入'
+        }
+    })
+
+
+    Vue.component('todo-item',{
+        props:['todo'],
+        temlate:'<li>{{toda.text}}</li>'
+    })
+    var app6=new Vue({
+        el:'#app6',
+        data:{
+            groceryList:[
+                {id:0,text:'qqq'},
+                {id:1,text:'qqfggq'},
+                {id:2,text:'qqqe'},
+                {id:3,text:'qqeeq'},
+                {id:4,text:'ww'},
+            ]
+        }
+    })
+
+
+    // 样式绑定
+    new Vue({
+        el:'#app7',
+        data:{
+            isActive:true
+            // 再次添加会覆盖原有的类 的样式
+        }
+    })
+
+    //直接绑定数据里的对象
+    new Vue({
+        el:'#app8',
+        data:{
+            classObject:{
+                active:true,
+                'text-danger':true
+            }
+        }
+    })
+
+    // 传给一个数组
+    new Vue({
+        el:'#app9',
+        data:{
+            activeClass:'active',
+            errorClass:'err-danger'
+        }
+    })
+
+    // 事件处理器v-on
+    new Vue({
+        el:'#app10',
+        data:{
+            counter:0
+        }
+    })
+
+    // 内联js语句
+    new Vue({
+        el:'#app11',
+        methods:{
+            say:function(message){
+                console.log(message)
+            }
+        }
+    })
+
+    // 复选框双向数据绑定
+    new Vue({
+        el:'#app12',
+        data:{
+            checked:false,
+            checkedNames:[]
+        }
+    })
+
+    // 自定义组件 全局组件
+    Vue.component('myself',{
+        template:'<h2>自定义的全局组件</h2>'
+    })
+    new Vue({
+        el:'#app13'
+    })
+
+    // 局部组件
+    var child={
+        template:'<h2>自定义的局部组件</h2>'
+    }
+    new Vue({
+        el:'#app14',
+        components:{
+            'myset':child
+        }
+    })
+
+    // prop父组件传递数据自定义属性
+    Vue.component('child',{
+        props:['message'],
+        template:'<p>{{message}}</p>'
+    })
+    new Vue({
+        el:'#app15'
+    })
+
+    // 动态绑定ports
+    Vue.component('child',{
+        props:['message'],
+        template:'<span>{{message}}</span>'
+    })
+    new Vue({
+        el:'#app16',
+        data:{
+            parentMsg:'父组件内容'
+        }
+    })
+
+    // v-bind将todo传到每一个重复的组件中
+    Vue.component('todo-item',{
+        props:['todo'],
+        template:'<li>{{todo.text}}</li>'
+    })
+    new Vue({
+        el:'#app17',
+        data:{
+            sites:[
+                {text:'aaa'},
+                {text:'bbb'},
+                {text:'ccc'},
+                {text:'ddd'}
+            ]
+        }
+    })
+    // alert('fsfs')
+    // 自定义事件
+    Vue.component('button-counter',{
+        template:'<button v-on:click="incrementHandler">{{counter}}</button>',
+        data:function(){
+            return{
+                counter:0
+            }
+        },
+        methods:{
+            incrementHandler:function(){
+                this.counter+=1
+                this.$emit('increment')
+            }
+        },
+    })
+    new Vue({
+        el:'#counter-event-example',
+        data:{
+            total:0
+        },
+        methods:{
+            incrementTotal:function(){
+                this.total+=1
+            }
+        }
+    })
+
+    // 按键盘
+    new Vue({
+        el:'body',
+        methods:{
+            search:function (message) {
+                alert(message)
+            }
+        }
+    })
+
+</script>
+</html>
