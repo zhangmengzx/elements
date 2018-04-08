@@ -9,6 +9,7 @@
 })(jQuery);
 
 // 时间格式转换
+
   function fermitTime(time){
      var now = new Date(time);
      var year = now.getFullYear();

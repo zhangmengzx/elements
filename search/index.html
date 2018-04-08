@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+
+	<title> </title>
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+	<style type="text/css">
+		td.alt { background-color: #ffc; background-color: rgba(230, 127, 34, 0.2); }
+	</style>
+</head>
+<body>
+
+				<input class="form-control" type="search" id="input-filter" size="15" placeholder="输入过滤条件"></input>
+
+			<table class="ex-1">
+				<thead>
+					<tr>
+			                <th scope="col" title="President Number">#</th>
+			                <th scope="col">President</th>
+			                <th scope="col">Terms</th>
+			                <th scope="col">Tenure</th>
+			            </tr>
+				</thead>
+				<tbody>
+			            <tr>
+										<td>1</td>
+										<td>George Washington</td>
+										<td>two</td>
+										<td>1789-1797</td>
+									</tr>
+			            <tr><td>2</td><td>John Adams</td><td>one</td><td>1797-1801</td></tr>
+			            <tr><td>3</td><td>Thomas Jefferson</td><td>two</td><td>1801-1809</td></tr>
+			            <tr><td>4</td><td>James Madison</td><td>two</td><td>1809-1817</td></tr>
+			            <tr><td>5</td><td>James Monroe</td><td>two</td><td>1817-1825</td></tr>
+			            <tr><td>6</td><td>John Quincy Adams</td><td>one</td><td>1825-1829</td></tr>
+			            <tr><td>7</td><td>Andrew Jackson</td><td>two</td><td>1829-1837</td></tr>
+			            <tr><td>8</td><td>Martin Van Buren</td><td>one</td><td>1837-1841</td></tr>
+			            <tr><td>9</td><td>William Henry Harrison</td><td>one-partial</td><td>1841</td></tr>
+			            <tr><td>10</td><td>John Tyler</td><td>one-partial</td><td>1841-1845</td></tr>
+			            <tr><td>11</td><td>James Knox Polk</td><td>one</td><td>1845-1849</td></tr>
+			            <tr><td>12</td><td>Zachary Taylor</td><td>one-partial</td><td>1849-1850</td></tr>
+			            <tr><td>13</td><td>Millard Fillmore</td><td>one-partial</td><td>1850-1853</td></tr>
+			            <tr><td>14</td><td>Franklin Pierce</td><td>one</td><td>1853-1857</td></tr>
+			            <tr><td>15</td><td>James Buchanan</td><td>one</td><td>1857-1861</td></tr>
+			            <tr><td>16</td><td>Abraham Lincoln</td><td>two-partial</td><td>1861-1865</td></tr>
+			            <tr><td>17</td><td>Andrew Johnson</td><td>one-partial</td><td>1865-1869</td></tr>
+			            <tr><td>18</td><td>Ulysses S. Grant</td><td>two</td><td>1869-1877</td></tr>
+			            <tr><td>19</td><td>Rutherford Birchard Hayes</td><td>one</td><td>1877-1881</td></tr>
+			            <tr><td>20</td><td>James Abram Garfield</td><td>one-partial</td><td>1881</td></tr>
+			            <tr><td>21</td><td>Chester Alan Arthur</td><td>one-partial</td><td>1881-1885</td></tr>
+
+			        </tbody>
+			</table>
+
+
+
+
+
+	<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+	<!-- <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script> -->
+	<script src="js/jquery.filtertable.js"></script>
+	    <script>
+	    $(document).ready(function() {
+	        $('table').filterTable({ // apply filterTable to all tables on this page
+	            inputSelector: '#input-filter',
+							callback:function (q) {
+          console.log(q)
+        }
+							 // use the existing input instead of creating a new one
+	        });
+	    });
+	</script>
+</body>
+</html>
