@@ -9,7 +9,7 @@
 })(jQuery);
 
 // 时间格式转换
-
+//
   function fermitTime(time){
      var now = new Date(time);
      var year = now.getFullYear();
@@ -40,6 +40,7 @@
           });
           setTimeout(() => {
             // 取消加载状态
+
             loading.close();
           }, 2000);
       },
@@ -93,6 +94,7 @@
     }
 
   })
+
 
   new Vue({
     el:'.block',
@@ -205,6 +207,7 @@
     data() {
       return {
         activeName: 'second'
+        
       };
     },
     methods: {
@@ -233,7 +236,7 @@
        };
      }
   })
-
+var type=""
   new Vue({
     el:'#shurukuang',
     data() {
@@ -243,7 +246,29 @@
     },
     methods:{
       inputdata(val){
-        console.log(val)
+        // alert('f');
+        // console.log(val)
+        type=val
       }
     }
   })
+new Vue({
+  el:'.danxuan',
+  data () {
+     return {
+       radio7: '',
+     };
+   },
+   methods:{
+     inputs(val){
+      //  console.log(val)
+       type=val
+     }
+   }
+})
+$('.btt').click(function functionName() {
+    console.log(type)
+})
+
+// var a=$('.bxy').val();
+// console.log(a)

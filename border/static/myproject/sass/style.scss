@@ -1,0 +1,52 @@
+@import "mixin";
+
+
+.box{
+  padding-top: 20px;
+}
+.ranking{
+      position:relative;
+      border:solid 1px $borderpink;
+      width:100%;
+      // background-color:$rgb;
+      margin-bottom:30px;
+      .left-top,.right-top,.left-bottom,.right-bottom{
+          width:5px;
+          height:5px;
+          position:absolute;
+          background:url(../images/attack-border-icon.png) no-repeat;
+      }
+      .left-top{
+          left:-1px;
+          top:-1px;
+      }
+      .right-top{
+          right:-1px;
+          top:-1px;
+          background-position:0 -7px;
+      }
+      .left-bottom{
+          left:-1px;
+          bottom:-1px;
+          background-position:0 -15px;
+      }
+      .right-bottom{
+          right:-1px;
+          bottom:-1px;
+          background-position:0 -22px;
+      }
+      .txt-tc{
+          width:140px;
+          @include height(20px,20px);
+          display:block;
+          position:absolute;
+          left:50%;
+          font-size:14px;
+          color:#5d7893;
+          text-align:center;
+          margin-left:-70px;
+          top:-10px;
+          background:white url(../images/attack-map-text.png) no-repeat;
+      }
+
+  }

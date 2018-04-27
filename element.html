@@ -107,7 +107,7 @@
   <div id="bianqian">
     <template>
       <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
+        <el-tab-pane label="用户管理" name="first">s用户管理</el-tab-pane>
         <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
         <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
         <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
@@ -134,11 +134,19 @@
   </br>
   <div id="shurukuang">
     <el-col :span="6" >
-      <el-input v-model="input" placeholder="请输入内容" @change="inputdata"></el-input>
+      <el-input v-model="input" class="sr" placeholder="请输入内容" @change="inputdata"></el-input>
     </el-col>
+  </div>
+<button type="button" class="btt" name="button">sfdsgfdsgsgfds</button>
+  <div class="danxuan">
+      <div>
+        <el-radio v-model="radio7"  value="a" label="1" border @change="inputs">备选项1</el-radio>
+        <el-radio v-model="radio7"  value="b" label="2" border @change="inputs">备选项2</el-radio>
+      </div>
   </div>
 </body>
   <!-- 先引入 Vue -->
+  <!--  -->
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <!-- 引入组件库 -->
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>

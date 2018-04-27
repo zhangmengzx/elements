@@ -1,0 +1,57 @@
+/* line 4, ../sass/style.scss */
+.box {
+  padding-top: 20px;
+}
+
+/* line 7, ../sass/style.scss */
+.ranking {
+  position: relative;
+  border: solid 1px #172530;
+  width: 100%;
+  margin-bottom: 30px;
+}
+/* line 13, ../sass/style.scss */
+.ranking .left-top, .ranking .right-top, .ranking .left-bottom, .ranking .right-bottom {
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  background: url(../images/attack-border-icon.png) no-repeat;
+}
+/* line 19, ../sass/style.scss */
+.ranking .left-top {
+  left: -1px;
+  top: -1px;
+}
+/* line 23, ../sass/style.scss */
+.ranking .right-top {
+  right: -1px;
+  top: -1px;
+  background-position: 0 -7px;
+}
+/* line 28, ../sass/style.scss */
+.ranking .left-bottom {
+  left: -1px;
+  bottom: -1px;
+  background-position: 0 -15px;
+}
+/* line 33, ../sass/style.scss */
+.ranking .right-bottom {
+  right: -1px;
+  bottom: -1px;
+  background-position: 0 -22px;
+}
+/* line 38, ../sass/style.scss */
+.ranking .txt-tc {
+  width: 140px;
+  height: 20px;
+  line-height: 20px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  font-size: 14px;
+  color: #5d7893;
+  text-align: center;
+  margin-left: -70px;
+  top: -10px;
+  background: white url(../images/attack-map-text.png) no-repeat;
+}
