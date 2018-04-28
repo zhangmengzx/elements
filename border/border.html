@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="static/myproject/css/style.css">
   </head>
   <body>
-    <div class="box">
+    <div class="box1">
       <div class="ranking">
           <!--四个小边角开始-->
           <s class="left-top"></s>
@@ -36,7 +36,44 @@
             g
           </div>
       </div>
+      <div class="box2">
+        <div class="point"></div>
+      </div>
+
+
+      <!-- 正方体 -->
+      <div class="box3">
+          <ul class="list" id="list">
+              <li class="in"></li>
+              <li class="in"></li>
+              <li class="in"></li>
+              <li class="in"></li>
+              <li class="in"></li>
+              <li class="in"></li>
+          </ul>
+      </div>
     </div>
+
+<script type="text/javascript">
+list.addEventListener('animationend',function(e){
+  e = e || event;
+  var target = e.target || e.srcElement;
+  if(target.nodeName == 'UL'){
+      list.style.animationName = 'none';
+      var children = list.getElementsByTagName('li');
+      for(var i = 0; i < children.length;i++){
+          children[i].style.animationName = 'none';
+      }
+      setTimeout(function(){
+          list.style.animationName = 'rotate';
+          var children = list.getElementsByTagName('li');
+          for(var i = 0; i < children.length;i++){
+              children[i].style.animationName = 'in' + (i+1);
+          }
+      },100);
+  }
+},false);
+</script>
 
   </body>
 </html>
