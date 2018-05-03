@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>百度地图默认显示卫星地图示例-Mzwu.COM</title>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
 </head>
 <body>
   <div style="width:850px;height:500px;border:1px solid gray" id="container"></div>
@@ -13,9 +13,14 @@
       map.addControl(new BMap.NavigationControl());
       map.addControl(new BMap.MapTypeControl());
       var marker = new BMap.Marker(point);//切换地图类型的控件
-      map.addOverlay(marker);
+      // map.addOverlay(marker);//默认的图标
       map.enableScrollWheelZoom();//启动鼠标滚轮缩放地图
 
+      //创建新的图标http://lbsyun.baidu.com/jsdemo/img/fox.gif
+      	var pt = new BMap.Point(116.405724, 39.92186);
+      	var myIcon = new BMap.Icon("http://www.dabaoku.com/gif/117/gif005.gif", new BMap.Size(300,157));
+      	var marker2 = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
+      	map.addOverlay(marker2);              // 将标注添加到地图中
 
 //       // 百度地图API功能
 // var map = new BMap.Map("allmap");    // 创建Map实例
