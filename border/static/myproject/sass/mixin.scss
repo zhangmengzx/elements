@@ -1,0 +1,43 @@
+//基础值
+$gray:#778499;
+$basecolor:#6cbb5a;
+$borderpink:#172530;
+$rgb:rgba(6,14,27,0.6);
+$gray:#778499;
+$border:1px solid lighten($gray,35);
+@mixin height($height,$line-height){
+    height:$height;
+    line-height:$line-height;
+}
+@mixin wBg($width,$bgColor){
+    width:$width;
+    background:$bgColor;
+    overflow:hidden;
+}
+@mixin bgImg($imgUrl,$repeat,$x,$y,$size){
+    background-image:url(../images/#{$imgUrl});
+    background-repeat:$repeat;
+    background-position:$x $y;
+    background-size:$size;
+}
+@mixin radius($radiu){
+    -webkit-border-radius: $radiu;
+    border-radius: $radiu;
+    -moz-border-radius: $radiu;
+}
+@mixin radius_left_top_bottom($radiu){
+    -webkit-border-bottom-left-radius: $radiu;
+    border-bottom-left-radius: $radiu;
+    -webkit-border-top-left-radius: $radiu;
+    border-top-left-radius: $radiu;
+    -moz-border-radius-bottomleft: $radiu;
+    -moz-border-radius-topleft: $radiu;
+}
+@mixin radius_right_top_bottom($radiu){
+    -webkit-border-bottom-right-radius: $radiu;
+    border-bottom-right-radius: $radiu;
+    -webkit-border-top-right-radius: $radiu;
+    border-top-right-radius: $radiu;
+    -moz-border-radius-bottomright: $radiu;
+    -moz-border-radius-topright: $radiu;
+}

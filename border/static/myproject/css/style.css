@@ -1,0 +1,204 @@
+/* line 4, ../sass/style.scss */
+.box1 {
+  padding-top: 20px;
+}
+
+/* line 7, ../sass/style.scss */
+.ranking {
+  position: relative;
+  border: solid 1px #172530;
+  width: 100%;
+  margin-bottom: 30px;
+}
+/* line 13, ../sass/style.scss */
+.ranking .left-top, .ranking .right-top, .ranking .left-bottom, .ranking .right-bottom {
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  background: url(../images/attack-border-icon.png) no-repeat;
+}
+/* line 19, ../sass/style.scss */
+.ranking .left-top {
+  left: -1px;
+  top: -1px;
+}
+/* line 23, ../sass/style.scss */
+.ranking .right-top {
+  right: -1px;
+  top: -1px;
+  background-position: 0 -7px;
+}
+/* line 28, ../sass/style.scss */
+.ranking .left-bottom {
+  left: -1px;
+  bottom: -1px;
+  background-position: 0 -15px;
+}
+/* line 33, ../sass/style.scss */
+.ranking .right-bottom {
+  right: -1px;
+  bottom: -1px;
+  background-position: 0 -22px;
+}
+/* line 38, ../sass/style.scss */
+.ranking .txt-tc {
+  width: 140px;
+  height: 20px;
+  line-height: 20px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  font-size: 14px;
+  color: #5d7893;
+  text-align: center;
+  margin-left: -70px;
+  top: -10px;
+  background: white url(../images/attack-map-text.png) no-repeat;
+}
+
+@keyframes move {
+  0% {
+    left: 0;
+    top: 20px;
+  }
+  20%, 80% {
+    top: 20px;
+  }
+  30%, 70% {
+    top: 20;
+  }
+  100% {
+    left: 100%;
+    top: 20px;
+  }
+}
+/* line 69, ../sass/style.scss */
+.box2 {
+  position: relative;
+  width: 30%;
+  height: 20px;
+}
+
+/* line 74, ../sass/style.scss */
+.point {
+  width: 5px;
+  height: 5px;
+  left: 100%;
+  top: 20px;
+  position: absolute;
+  background: url(../images/attack-border-icon.png) no-repeat;
+  animation: move 6s  linear;
+}
+
+/* line 88, ../sass/style.scss */
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* line 93, ../sass/style.scss */
+.box3 {
+  height: 300px;
+  width: 300px;
+  perspective: 1000px;
+  margin: 100px 400px 0 100px;
+}
+
+/* line 101, ../sass/style.scss */
+.list {
+  position: relative;
+  height: 300px;
+  width: 300px;
+  background-color: blue;
+  transform-style: preserve-3d;
+  transform-origin: 0 0 0;
+  animation: rotate 1s  10s 3 both linear;
+}
+
+/* line 110, ../sass/style.scss */
+.in {
+  position: absolute;
+  height: 300px;
+  width: 300px;
+}
+
+/* line 116, ../sass/style.scss */
+.list .in:nth-child(6) {
+  background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1525425126&di=05db6619c37b392d9076da6aed56f807&imgtype=jpg&er=1&src=http%3A%2F%2Fwww.glzhuang.com%2FAttachments%2Fshare%2F201603%2F56fc9807da709.jpg") no-repeat;
+  transform-origin: top;
+  animation: in6 2s both;
+}
+
+/* line 122, ../sass/style.scss */
+.list .in:nth-child(5) {
+  background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524830457804&di=04665e8e24e8da38420f182c28454c21&imgtype=0&src=http%3A%2F%2Fqimg.hxnews.com%2F2018%2F0411%2F1523427982350.jpg") no-repeat;
+  transform-origin: right;
+  animation: in5 2s 2s both;
+}
+
+/* line 128, ../sass/style.scss */
+.list .in:nth-child(4) {
+  background: url("http://e.hiphotos.baidu.com/image/pic/item/ae51f3deb48f8c54c8a5db4236292df5e0fe7f6c.jpg") no-repeat;
+  transform-origin: bottom;
+  animation: in4 2s 4s both;
+}
+
+/* line 134, ../sass/style.scss */
+.list .in:nth-child(3) {
+  background: url("http://f.hiphotos.baidu.com/image/h%3D300/sign=404a1782eb1190ef1efb94dffe1a9df7/3ac79f3df8dcd1007fde3f4e7e8b4710b9122f1b.jpg") no-repeat;
+  transform-origin: left;
+  animation: in3 2s 6s both;
+}
+
+/* line 140, ../sass/style.scss */
+.list .in:nth-child(2) {
+  background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524830478936&di=0bee571d5230960f25aecfbefb119568&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D8c7b261e08e9390156028d364bed54f9%2F0bdc9425bc315c60c40af5d184b1cb1349547710.jpg") no-repeat;
+  animation: in2 2s 8s both;
+}
+
+/* line 145, ../sass/style.scss */
+.list .in:nth-child(1) {
+  background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524830503445&di=353c1e729eae0f9a65a903707b634e34&imgtype=0&src=http%3A%2F%2Fnpic7.edushi.com%2Fcn%2Fzixun%2Fzh-chs%2F2018-04%2F15%2F4365261-201804151200077355.jpg") no-repeat;
+}
+
+/* line 149, ../sass/style.scss */
+.box3:hover .list {
+  animation-play-state: paused;
+}
+
+/* line 150, ../sass/style.scss */
+.box3:hover .in {
+  animation-play-state: paused;
+}
+
+@keyframes in6 {
+  100% {
+    transform: rotateX(90deg);
+  }
+}
+@keyframes in5 {
+  100% {
+    transform: rotateY(90deg);
+  }
+}
+@keyframes in4 {
+  100% {
+    transform: rotateX(-90deg);
+  }
+}
+@keyframes in3 {
+  100% {
+    transform: rotateY(-90deg);
+  }
+}
+@keyframes in2 {
+  100% {
+    transform: translateZ(100px);
+  }
+}
+@keyframes rotate {
+  100% {
+    transform: rotate3d(1, 1, 1, 360deg);
+  }
+}

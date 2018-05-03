@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+              var date=new Date();
+              var year=date.getFullYear();
+              var month=date.getMonth()+1;
+              var days=date.getDate();
+              var hours=date .getHours(); //获取当前小时数(0-23)
+              var minutes=date .getMinutes(); //获取当前分钟数(0-59)
+              var seconds=date .getSeconds(); //获取当前秒数(0-59)
+              if(month>=1&&month<=9){
+                  month='0'+month;
+              }
+              if( days>=0&&days<=9){
+                   days='0'+days;
+              }
+              if( hours>=0&&hours<=9){
+                   hours='0'+hours;
+              }
+              if( minutes>=0&&minutes<=9){
+                   minutes='0'+minutes;
+              }
+              if( seconds>=0&&seconds<=9){
+                   seconds='0'+seconds;
+              }
+
+              var endtime=year+'-'+month+'-'+days+'T'+hours+':'+minutes+':'+seconds;
+
+              var oldseconds=seconds-10;
+              if( oldseconds>=0&&oldseconds<=9){
+                   oldseconds='0'+oldseconds;
+              }
+              var starttime=year+'-'+month+'-'+days+'T'+hours+':'+minutes+':'+oldseconds;
+              console.log(starttime)
+              // return endtime;
+              console.log(endtime)
+    </script>
+  </body>
+</html>

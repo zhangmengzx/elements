@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="element.css">
+  <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="css/default.css"> -->
+  <!-- stylesheet for demo and examples -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+</head>
+<body>
+  <div id="tishi">
+    <template>
+      <el-button :plain="true" @click="open2">成功</el-button>
+      <el-button :plain="true" @click="open3">警告</el-button>
+      <el-button :plain="true" @click="open">消息</el-button>
+      <el-button :plain="true" @click="open4" icon="el-icon-remove-outline">错误</el-button>
+      <i class="el-icon-share"></i>
+      <i class="el-icon-delete"></i>
+      <el-button type="primary" icon="el-icon-search">搜索</el-button>
+      <el-button  type="primary"  @click="onSearch">查询</el-button>
+    </template>
+  </div>
+<!--
+  <div id="indeterminate">
+    <template>
+      <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+      <div style="margin: 15px 0;"></div>
+      <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
+        <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
+      </el-checkbox-group>
+    </template>
+  </div>
+
+  <div class="block">
+    <el-date-picker
+      v-model="value7"
+      type="daterange"
+      align="right"
+      unlink-panels
+      range-separator="至"
+      start-placeholder="开始日期"
+      end-placeholder="结束日期"
+      @change="getSTime"
+      :picker-options="pickerOptions2">
+    </el-date-picker>
+  </div>
+
+  <div class="hanbao">
+    <el-row>
+      <el-col :span="4" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
+        <el-card :body-style="{ padding: '0px' }">
+          <img src="http://element-cn.eleme.io/static/hamburger.50e4091.png" class="image">
+          <div style="padding: 14px;">
+            <span>好吃的汉堡</span>
+            <div class="bottom clearfix">
+              <time class="time">{{ currentDate }}</time>
+              <el-button type="text" class="button"><a href="https://www.ele.me" target="_blank">操作按钮</a></el-button>
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+  </div>
+
+  <div class="biaoge">
+    <el-col :span="8">
+      <section id="examples">
+
+         <div id="content-1" class="content">
+          <template>
+            <el-table
+              :data="tableData"
+              style="width: 100%">
+              <el-table-column
+                prop="date"
+                label="日期"
+                width="180">
+              </el-table-column>
+              <el-table-column
+                prop="name"
+                label="姓名"
+                width="180">
+              </el-table-column>
+            </el-table>
+          </template>
+        </div>
+      </section>
+    </el-col>
+  </div>
+
+  <div class="block">
+    <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="currentPage4"
+      :page-sizes="[100, 200, 300, 400]"
+      :page-size="100"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="400">
+    </el-pagination>
+  </div>
+
+  <div id="bianqian">
+    <template>
+      <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane label="用户管理" name="first">s用户管理</el-tab-pane>
+        <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+        <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+        <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
+      </el-tabs>
+    </template>
+  </div>
+
+  <div id="fenye">
+    <template>
+        <div class="block">
+          <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="currentPage4"
+            :page-sizes="[20, 30, 50]"
+            :page-size="100"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="900">
+          </el-pagination>
+        </div>
+      </template>
+  </div>
+
+  </br>
+  <div id="shurukuang">
+    <el-col :span="6" >
+      <el-input v-model="input" class="sr" placeholder="请输入内容" @change="inputdata"></el-input>
+    </el-col>
+  </div>
+<button type="button" class="btt" name="button">sfdsgfdsgsgfds</button>
+  <div class="danxuan">
+      <div>
+        <el-radio v-model="radio7"  value="a" label="1" border @change="inputs">备选项1</el-radio>
+        <el-radio v-model="radio7"  value="b" label="2" border @change="inputs">备选项2</el-radio>
+      </div>
+  </div> -->
+
+  <div class="fenqun">
+    <el-col :span="10" >
+      <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
+        <el-form-item
+          prop="email"
+          label="邮箱"
+          :rules="[
+            { required: true, message: '请输入邮箱地址', trigger: 'blur' },
+            { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+          ]"
+        >
+          <el-input v-model="dynamicValidateForm.email"></el-input>
+        </el-form-item>
+        <el-form-item
+          v-for="(domain, index) in dynamicValidateForm.domains"
+          :label="'域名' + index"
+          :key="domain.key"
+          :prop="'domains.' + index + '.value'"
+          :rules="{
+            required: true, message: '域名不能为空', trigger: 'blur'
+          }"
+        >
+
+          <el-select v-model="value" placeholder="请选择">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+
+          <el-form-item label="活动区域">
+           <el-select v-model="sizeForm.region" placeholder="请选择活动区域">
+             <el-option label="区域一" value="shanghai"></el-option>
+             <el-option label="区域二" value="beijing"></el-option>
+           </el-select>
+         </el-form-item>
+          <el-input v-model="domain.value"></el-input><el-button @click.prevent="removeDomain(domain)">删除</el-button>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm('dynamicValidateForm')">提交</el-button>
+          <el-button @click="addDomain">新增域名</el-button>
+          <el-button @click="resetForm('dynamicValidateForm')">重置</el-button>
+        </el-form-item>
+      </el-form>
+    </el-col>
+  </div>
+</body>
+  <!-- 先引入 Vue -->
+  <!--  -->
+  <script src="vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="index.js"></script>
+  <script src="js/jquery.min.js" type="text/javascript"></script>
+  <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="element.js"></script>
+
+</html>

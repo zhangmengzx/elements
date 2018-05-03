@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>百度地图默认显示卫星地图示例-Mzwu.COM</title>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+</head>
+<body>
+  <div style="width:850px;height:500px;border:1px solid gray" id="container"></div>
+  <script type="text/javascript">
+      var map = new BMap.Map("container", {mapType:BMAP_HYBRID_MAP});//默认显示地图类型
+      var point = new BMap.Point(116.405724, 39.92186);
+      map.centerAndZoom(point, 18);
+      map.addControl(new BMap.NavigationControl());
+      map.addControl(new BMap.MapTypeControl());
+      var marker = new BMap.Marker(point);//切换地图类型的控件
+      map.addOverlay(marker);
+      map.enableScrollWheelZoom();//启动鼠标滚轮缩放地图
+
+
+//       // 百度地图API功能
+// var map = new BMap.Map("allmap");    // 创建Map实例
+// map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+// //添加地图类型控件
+// map.addControl(new BMap.MapTypeControl({
+//   mapTypes:[
+//           BMAP_NORMAL_MAP,//普通地图
+//           BMAP_HYBRID_MAP,//卫星带文字
+//           BMAP_NORMAL_MAP//卫星没有文字
+//       ]}));
+// map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+// map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+  </script>
+</body>
+</html>
