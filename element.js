@@ -68,207 +68,274 @@
 
   })
 
-  const cityOptions = ['上海', '北京', '广州', '深圳']
   new Vue({
-    el:'#indeterminate',
+    el:'.fenqun',
     data() {
-      return {
-        checkAll: false,
-        checkedCities: ['上海'],
-        cities: cityOptions,
-        isIndeterminate: true
-      };
-    },
-    methods: {
-      handleCheckAllChange(val) {
-        this.checkedCities = val ? cityOptions : [];
-        this.isIndeterminate = false;
-        // console.log(val)
-      },
-      handleCheckedCitiesChange(value) {
-        let checkedCount = value.length;
-        console.log(value)
-        this.checkAll = checkedCount === this.cities.length;
-        this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
-      }
-    }
-
-  })
-
-
-  new Vue({
-    el:'.block',
-    methods:{
-      getSTime(val) {
-              this.sTime=val;//这个sTime是在data中声明的，也就是v-model绑定的值
-              var starttime=fermitTime(val[0]);
-              var endtime=fermitTime(val[1])
-              console.log(starttime+'至'+endtime)
-          }
-    },
-    data() {
-       return {
-         pickerOptions2: {
-           shortcuts: [{
-             text: '最近一周',
-             onClick(picker) {
-               const end = new Date();
-               const start = new Date();
-               start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-               picker.$emit('pick', [start, end]);
-             }
-           }, {
-             text: '最近一个月',
-             onClick(picker) {
-               const end = new Date();
-               const start = new Date();
-               start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-               picker.$emit('pick', [start, end]);
-             }
-           }, {
-             text: '最近三个月',
-             onClick(picker) {
-               const end = new Date();
-               const start = new Date();
-               start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-               picker.$emit('pick', [start, end]);
-             }
-           }]
-         },
-         value6: '',
-         value7: ''
-       };
-     }
-  })
-
-  new Vue({
-    el:'.hanbao',
-    data() {
-      return {
-        currentDate: new Date()
-      };
-    }
-  })
-
-
-  new Vue({
-    el:'.biaoge',
-    data() {
-      return {
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-        }]
-      }
-    }
-  })
-
-  new Vue({
-    el:'#bianqian',
-    data() {
-      return {
-        activeName: 'second'
-        
-      };
-    },
-    methods: {
-      handleClick(tab, event) {
-        console.log(tab, event);
-      }
-    }
-  })
-
-  new Vue({
-    el:'#fenye',
-    methods: {
-       handleSizeChange(val) {
-         console.log(`每页 ${val} 条`);
-       },
-       handleCurrentChange(val) {
-         console.log(`当前页: ${val}`);
-       }
-     },
-     data() {
-       return {
-         currentPage1: 5,
-         currentPage2: 5,
-         currentPage3: 5,
-         currentPage4: 4
-       };
-     }
-  })
-var type=""
-  new Vue({
-    el:'#shurukuang',
-    data() {
-      return {
-        input: ''
-      }
-    },
-    methods:{
-      inputdata(val){
-        // alert('f');
-        // console.log(val)
-        type=val
-      }
-    }
-  })
-new Vue({
-  el:'.danxuan',
-  data () {
      return {
-       radio7: '',
+       dynamicValidateForm: {
+         domains: [{
+           value: ''
+         }],
+         email: ''
+       },
+       options: [{
+          value: '选项1',
+          label: '黄金糕'
+        }, {
+          value: '选项2',
+          label: '双皮奶'
+        }, {
+          value: '选项3',
+          label: '蚵仔煎'
+        }, {
+          value: '选项4',
+          label: '龙须面'
+        }, {
+          value: '选项5',
+          label: '北京烤鸭'
+        }],
+        value: '',
+        sizeForm: {
+          name: '',
+          region: '',
+          date1: '',
+          date2: '',
+          delivery: false,
+          type: [],
+          resource: '',
+          desc: ''
+        },
      };
    },
-   methods:{
-     inputs(val){
-      //  console.log(val)
-       type=val
+   methods: {
+     submitForm(formName) {
+       this.$refs[formName].validate((valid) => {
+         if (valid) {
+           alert('submit!');
+         } else {
+           console.log('error submit!!');
+           return false;
+         }
+       });
+     },
+      onSubmit() {
+        console.log('submit!');
+      },
+     resetForm(formName) {
+       this.$refs[formName].resetFields();
+     },
+     removeDomain(item) {
+       var index = this.dynamicValidateForm.domains.indexOf(item)
+       if (index !== -1) {
+         this.dynamicValidateForm.domains.splice(index, 1)
+       }
+     },
+     addDomain() {
+       this.dynamicValidateForm.domains.push({
+         value: '',
+         key: Date.now()
+       });
      }
    }
-})
-$('.btt').click(function functionName() {
-    console.log(type)
-})
-
-// var a=$('.bxy').val();
-// console.log(a)
+  })
+//   const cityOptions = ['上海', '北京', '广州', '深圳']
+//   new Vue({
+//     el:'#indeterminate',
+//     data() {
+//       return {
+//         checkAll: false,
+//         checkedCities: ['上海'],
+//         cities: cityOptions,
+//         isIndeterminate: true
+//       };
+//     },
+//     methods: {
+//       handleCheckAllChange(val) {
+//         this.checkedCities = val ? cityOptions : [];
+//         this.isIndeterminate = false;
+//         // console.log(val)
+//       },
+//       handleCheckedCitiesChange(value) {
+//         let checkedCount = value.length;
+//         console.log(value)
+//         this.checkAll = checkedCount === this.cities.length;
+//         this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+//       }
+//     }
+//
+//   })
+//
+//
+//   new Vue({
+//     el:'.block',
+//     methods:{
+//       getSTime(val) {
+//               this.sTime=val;//这个sTime是在data中声明的，也就是v-model绑定的值
+//               var starttime=fermitTime(val[0]);
+//               var endtime=fermitTime(val[1])
+//               console.log(starttime+'至'+endtime)
+//           }
+//     },
+//     data() {
+//        return {
+//          pickerOptions2: {
+//            shortcuts: [{
+//              text: '最近一周',
+//              onClick(picker) {
+//                const end = new Date();
+//                const start = new Date();
+//                start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+//                picker.$emit('pick', [start, end]);
+//              }
+//            }, {
+//              text: '最近一个月',
+//              onClick(picker) {
+//                const end = new Date();
+//                const start = new Date();
+//                start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+//                picker.$emit('pick', [start, end]);
+//              }
+//            }, {
+//              text: '最近三个月',
+//              onClick(picker) {
+//                const end = new Date();
+//                const start = new Date();
+//                start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+//                picker.$emit('pick', [start, end]);
+//              }
+//            }]
+//          },
+//          value6: '',
+//          value7: ''
+//        };
+//      }
+//   })
+//
+//   new Vue({
+//     el:'.hanbao',
+//     data() {
+//       return {
+//         currentDate: new Date()
+//       };
+//     }
+//   })
+//
+//
+//   new Vue({
+//     el:'.biaoge',
+//     data() {
+//       return {
+//         tableData: [{
+//           date: '2016-05-02',
+//           name: '王小虎',
+//         }, {
+//           date: '2016-05-04',
+//           name: '王小虎',
+//         }, {
+//           date: '2016-05-03',
+//           name: '王小虎',
+//         }, {
+//           date: '2016-05-03',
+//           name: '王小虎',
+//         }, {
+//           date: '2016-05-03',
+//           name: '王小虎',
+//         }, {
+//           date: '2016-05-03',
+//           name: '王小虎',
+//         }, {
+//           date: '2016-05-03',
+//           name: '王小虎',
+//         }, {
+//           date: '2016-05-03',
+//           name: '王小虎',
+//         }, {
+//           date: '2016-05-03',
+//           name: '王小虎',
+//         }, {
+//           date: '2016-05-03',
+//           name: '王小虎',
+//         }, {
+//           date: '2016-05-03',
+//           name: '王小虎',
+//         }, {
+//           date: '2016-05-03',
+//           name: '王小虎',
+//         }, {
+//           date: '2016-05-03',
+//           name: '王小虎',
+//         }, {
+//           date: '2016-05-03',
+//           name: '王小虎',
+//         }]
+//       }
+//     }
+//   })
+//
+//   new Vue({
+//     el:'#bianqian',
+//     data() {
+//       return {
+//         activeName: 'second'
+//
+//       };
+//     },
+//     methods: {
+//       handleClick(tab, event) {
+//         console.log(tab, event);
+//       }
+//     }
+//   })
+//
+//   new Vue({
+//     el:'#fenye',
+//     methods: {
+//        handleSizeChange(val) {
+//          console.log(`每页 ${val} 条`);
+//        },
+//        handleCurrentChange(val) {
+//          console.log(`当前页: ${val}`);
+//        }
+//      },
+//      data() {
+//        return {
+//          currentPage1: 5,
+//          currentPage2: 5,
+//          currentPage3: 5,
+//          currentPage4: 4
+//        };
+//      }
+//   })
+// var type=""
+//   new Vue({
+//     el:'#shurukuang',
+//     data() {
+//       return {
+//         input: ''
+//       }
+//     },
+//     methods:{
+//       inputdata(val){
+//         // alert('f');
+//         // console.log(val)
+//         type=val
+//       }
+//     }
+//   })
+// new Vue({
+//   el:'.danxuan',
+//   data () {
+//      return {
+//        radio7: '',
+//      };
+//    },
+//    methods:{
+//      inputs(val){
+//       //  console.log(val)
+//        type=val
+//      }
+//    }
+// })
+// $('.btt').click(function functionName() {
+//     console.log(type)
+// })
