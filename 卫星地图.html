@@ -11,8 +11,8 @@
       var point = new BMap.Point(116.405724, 39.92186);
       map.centerAndZoom(point, 18);
       map.addControl(new BMap.NavigationControl());
-      map.addControl(new BMap.MapTypeControl());//切换地图类型的控件
-      var marker = new BMap.Marker(point);
+      map.addControl(new BMap.MapTypeControl());
+      var marker = new BMap.Marker(point);//切换地图类型的控件
       map.addOverlay(marker);
       map.enableScrollWheelZoom();//启动鼠标滚轮缩放地图
 
