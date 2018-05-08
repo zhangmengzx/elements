@@ -1,0 +1,128 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jquery图片跟随鼠标晃动效果</title>
+<script type="text/javascript" src="js/packed_jquery.min6301986802.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript">
+$(function () {
+         var index_div_pro = [{
+                        sx: 0,
+                        sy: 0,
+                        mw: 3,
+                        mh: 1,
+                        bx: 8.4,
+                        by: 10.4,
+                        rx: -0.6
+                },
+                {
+                        sx: 35,
+                        sy: 0,
+                        mw: 3,
+                        mh: 0.5,
+                        bx: 6.4,
+                        by: 8.4,
+                        rx: -0.1
+                },
+                {
+                        sx: 785,
+                        sy: 90,
+                        mw: 0.3,
+                        mh: 0.1,
+                        bx: 6.5,
+                        by: 7.4,
+                        rx: -0.1
+                }];
+
+                var ePageX = null;
+                var ePageY = null;
+
+                function getMousePos(expression) {
+                        if (ePageX == null || ePageY == null) return null;
+                        var _x = $(expression).position().left;
+                        _x += ePageX - $(expression).parent().position().left;
+                        var _y = $(expression).position().top;
+                        _y += ePageY - $(expression).parent().position().top;
+                        return {
+                                x: _x,
+                                y: _y
+                        }
+                };
+
+                var index_xh = setInterval(function () {
+                        for (var i = 0; i < 3; i++) {
+                                var mousepos = getMousePos("#indexg" + i);
+                                if (mousepos != null) {
+                                        var left = parseInt($("#indexg" + i).css("left"));
+                                        var l = left + (index_div_pro[i].sx + index_div_pro[i].mw - (mousepos.x - 100) / index_div_pro[i].bx * index_div_pro[i].rx - left) * 0.2;
+                                        var top = parseInt($("#indexg" + i).css("top"));
+                                        var t = top + (index_div_pro[i].sy + index_div_pro[i].mh - (mousepos.y - 100) / index_div_pro[i].by - top) * 0.2;
+                                        $("#indexg" + i).css({
+                                                left: l,
+                                                top: t
+                                        })
+                                }
+                        }
+                },
+                15);
+
+                $("body").mousemove(function (event) {
+                        event = event || window.event;
+                        ePageX = event.pageX;
+                        ePageY = event.pageY;
+                });
+
+
+});
+</script>
+<link href="css/lanrenzhijia.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<div id="indexgs"> <img id="indexg2" src="images/g3.png" width="364" height="308"/>
+  <div id="indexg0"> <img src="images/g1.png" width="918" height="508"/> <a href="#"></a> </div>
+  <div id="indexg1"> <img src="images/g2.png" width="353" height="538"/> <a href="#"></a> </div>
+</div>
+
+</body>
+</html> -->
+
+
+
+
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    	*{margin:0px; padding:0px;}
+    	div{background:#2454a6; width:500px; height:350px; position:relative; margin:0 auto;}
+    	img,span,p{position:absolute; color:#fff; font-family:"微软雅黑"; font-size:14px;}
+    	img{left:60px; top:0px;}
+    	/*span{left:60px; top:180px; font-size:14px; font-weight:bold;}
+    	p{left:50px; top:230px; width:350px; text-indent:2em}*/
+  </style>
+ </head>
+ <body>
+   <div id="sky">
+  	<img src="http://www.5imoban.net/view/demoimg/cloud.png" />
+  	<!-- <span>鼠标左右晃动，文字和图片跟着晃动的视差效果</span>
+  	<p>将鼠标移动到“天空”上，左右上下晃动，可以看到云层、标题和段落文字都向上下左右偏移！</p> -->
+   </div>
+   <script src="http://www.5imoban.net/download/jquery/jquery-1.8.3.min.js"></script>
+   <script>
+    $('#sky').on('mousemove', function(e) {
+  	//公式
+    var offsetX = e.clientX / window.innerWidth - 0.5,
+        offsetY = e.clientY / window.innerHeight - 0.5;
+  	var _left = -40 * offsetX;    //如果想动的幅度更大，可以调整 -40 的值
+  	var _top = -40 * offsetY;     //如果想动的幅度更大，可以调整 -40 的值
+  	//应用公式
+  	$('#sky img').css('left',60+_left*2).css('top',_top*1);  //将您的left值和top值先+此数值，*的小数越大，动的越大，否则越小
+  	// $('#sky span').css('left',60+_left*2).css('top',180+_top*2); //将您的left值和top值先+此数值，*的小数越大，动的越大，否则越小
+  	// $('#sky p').css('left',50+_left*1.5).css('top',230+_top*1.5); //将您的left值和top值先+此数值，*的小数越大，动的越大，否则越小
+    });
+   </script>
+ </body>
+</html>
