@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      #scroll{
+        height: 200px;
+        width: 300px
+      }
+    </style>
+  </head>
+  <body>
+    <div id="scroll" >
+      <ul>
+        <li>2</li>
+        <li>3</li>
+        <li>5</li>
+        <li>5</li>
+        <li>6</li>
+        <li>87</li>
+        <li>5</li>
+        <li>5</li>
+        <li>9</li>
+        <li>6</li>
+        <li>4</li>
+        <li>4</li>
+        <li>2</li>
+        <li>2</li>
+        <li>9</li>
+        <li>1</li>
+        <li>2</li>
+        <li>8</li>
+        <li>8</li>
+        <li>84</li>
+      </ul>
+    </div>
+  </body>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <script src="jquery.nicescroll.js"></script>
+
+  <script type="text/javascript">
+      $('#scroll').niceScroll({
+        // 滚动条插件
+// 渐变色滚动条
+        // linear-gradient(red,yellow,blue)
+        cursorcolor: "linear-gradient(#009eff,#00ebff)",//#CC0071?光标颜色
+        cursoropacitymax: 1,//改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+        touchbehavior: false,//使光标拖动滚动像在台式电脑触摸设备
+        cursorwidth: "9px",//像素光标的宽度
+        cursorminheight: 50, // 设置滚动条的最小高度 (像素)
+        cursorborder: "0",//?游标边框css定义
+        cursorborderradius: "450px",//以像素为光标边界半径
+        autohidemode: false,//是否隐藏滚动条
+        enablescrollonselection:true,
+
+
+
+
+
+      })
+  </script>
+
+
+</html>
