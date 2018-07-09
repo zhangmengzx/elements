@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+		#allmap{width:100%;height:500px;}
+		#r-result{width:100%;margin-top:5px;}
+		p{margin:5px; font-size:14px;}
+      	img{
+      		width:50px;
+          	height:50px;
+      	}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"></script>
+	<title>添加/删除工具条、比例尺控件</title>
+</head>
+<body>
+	<div id="allmap"></div>
+ 
+	<p>在地图的左上、右上分别展示完整、缩略样式的缩放平移控件；同时在地图的左上方展示比例尺控件，点击按钮查看效果</p>
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");
+	map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
+  
+	//var top_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}); //右上角，仅包含平移和缩放按钮
+	/*缩放控件type有四种类型:
+	BMAP_NAVIGATION_CONTROL_SMALL：仅包含平移和缩放按钮；BMAP_NAVIGATION_CONTROL_PAN:仅包含平移按钮；BMAP_NAVIGATION_CONTROL_ZOOM：仅包含缩放按钮*/
+  
+ 	// 定义一个控件类，即function    
+        function ZoomControl() {
+            // 设置默认停靠位置和偏移量  
+            this.defaultAnchor = BMAP_ANCHOR_TOP_LEFT;
+            this.defaultOffset = new BMap.Size(10, 10);
+        }
+        // 通过JavaScript的prototype属性继承于BMap.Control   
+        ZoomControl.prototype = new BMap.Control();
+
+        // 自定义控件必须实现initialize方法，并且将控件的DOM元素返回   
+        // 在本方法中创建个div元素作为控件的容器，并将其添加到地图容器中
+        ZoomControl.prototype.initialize = function (map) {
+            //创建一个DIV
+            var mydiv = document.createElement("div");
+            //创建一个放大用的img
+            var img_plus = document.createElement("img");
+            //设置img的src属性
+            img_plus.setAttribute("src", "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531137401986&di=27ff09ff7543690c316c36778f8c9eb9&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fe4dde71190ef76c602a615109616fdfaaf516791.jpg");
+            //为img设置点击事件
+            img_plus.onclick = function () {
+                map.zoomTo(map.getZoom() + 1);
+            }
+            //创建一个缩小用的img
+            var img_minus = document.createElement("img");
+            img_minus.setAttribute("src", "http://img4.imgtn.bdimg.com/it/u=711475619,1216562681&fm=27&gp=0.jpg");
+            img_minus.onclick = function () {
+                map.zoomTo(map.getZoom() - 1);
+            }
+            //添加放大的img图标到div中
+            mydiv.appendChild(img_plus);
+            //加一个换行符，使2个图标上下排列
+            mydiv.appendChild(document.createElement("br"));
+            //添加缩小的img图标到div中
+            mydiv.appendChild(img_minus);
+            //添加DOM元素到地图中
+            map.getContainer().appendChild(mydiv);
+            //将DOM元素返回；
+            return mydiv;
+        }
+
+        // 创建控件实例    
+        var myZoomCtrl = new ZoomControl();
+        // 添加到地图当中    
+        map.addControl(myZoomCtrl);  
+
+	 
+</script>
+
