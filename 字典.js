@@ -2,7 +2,7 @@
       function attackmaptop(data) {
           data=data.sort(function(a,b){
           return a.value-b.value;
-      });
+      })
 
                              
       var con = {};
