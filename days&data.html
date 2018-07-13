@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+  <div id="app">
+    <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+    <div style="margin: 15px 0;"></div>
+    <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
+      <el-checkbox  v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
+    </el-checkbox-group>
+
+    <el-tabs v-model="activeName" @tab-click="handleClick">
+      <el-tab-pane label="态势感知" name="first">
+        <!-- 模块及类型 -->
+        <div class="select">
+            <span class="names">模块及类型：</span>
+            <template>
+              <el-cascader
+                :options="options"
+                change-on-select
+                ref="models"
+                v-model="selectedOptions3"
+              ></el-cascader>
+            </template>
+        </div>
+        <!-- 日历 -->
+        <div class="time">
+          <div class="block">
+             <span class="names">日期选择：</span>
+             <el-date-picker
+               ref="datatime"
+               v-model="value7"
+               type="daterange"
+               align="right"
+               unlink-panels
+               range-separator="至"
+               start-placeholder="开始日期"
+               end-placeholder="结束日期"
+               :picker-options="pickerOptions2"
+               @change="dataChange">
+             </el-date-picker>
+           </div>
+        </div>
+        <!-- 更多筛选条件 -->
+        <div class="morechange">
+          <span>更多筛选条件</span>
+          <div class="conditions">
+            <el-row :gutter="20">
+              <el-col :span="6">
+                <div class="grid-content bg-purple">
+                  <div class="condition">
+                    <span class="names">地区：</span>
+                    <el-input ref="input1"
+                      placeholder="北京市"
+                      v-model="input1"
+                      clearable>
+                    </el-input>
+                  </div>
+                </div>
+              </el-col>
+
+              <el-col :span="6">
+                <div class="grid-content bg-purple">
+                  <div class="condition">
+                    <span class="names">IP：</span>
+                    <el-input
+                      ref="input2"
+                      placeholder="192.168.1.27"
+                      v-model="input2"
+                      clearable>
+                    </el-input>
+                  </div>
+                </div>
+              </el-col>
+
+              <el-col :span="6">
+                <div class="grid-content bg-purple">
+                  <div class="condition">
+                    <span class="names">uniqueId：</span>
+                    <el-input
+                      ref="input3"
+                      placeholder="AWLYDDBE"
+                      v-model="input3"
+                      clearable>
+                    </el-input>
+                  </div>
+                </div>
+              </el-col>
+
+            </el-row>
+          </div>
+        </div>
+        <div class="searchbtn">
+          <el-row :gutter="20">
+            <el-col :span="12" :offset="10">
+              <div class="grid-content bg-purple">
+                <el-button size="medium" type="primary" @click="search">点击搜索</el-button>
+              </div>
+            </el-col>
+          </el-row>
+        </div>
+      </el-tab-pane>
+      <!-- <el-tab-pane label="用户分析" name="second">用户分析</el-tab-pane> -->
+    </el-tabs>
+  </div>
+</body>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+  // 模块及类型
+  console.log("df")
+  const cityOptions = ['上海', '北京', '广州', '深圳'];
+    new Vue({
+      el:'#app',
+      data() {
+        return {
+          checkAll: false,
+          checkedCities: ['上海', '北京'],
+          cities: cityOptions,
+          isIndeterminate: true,
+
+          activeName: 'first',
+          options: [{
+            value: 'gongji',
+            label: '攻击痕迹',
+            children: [{
+              value: 'aaa',
+              label: '调试器'
+            }, {
+              value: 'bbb',
+              label: '模拟器'
+            }, {
+              value: 'ccc ',
+              label: '游戏外挂'
+            }]
+          }, {
+            value: 'yichang',
+            label: '异常回报',
+            children: [{
+              value: 'ddd',
+              label: 'java'
+            }, {
+              value: 'eee',
+              label: 'native'
+            }, {
+              value: 'fff',
+              label: 'anr'
+            }]
+          }],
+          mytext:"",
+          pickerOptions2: {
+            disabledDate(time) {
+             return time.getTime() < Date.now();
+           },
+            shortcuts: [{
+              text: '最近一周',
+              onClick(picker) {
+                const end = new Date();
+                const start = new Date();
+                start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+                picker.$emit('pick', [start, end]);
+              }
+            }, {
+              text: '最近一个月',
+              onClick(picker) {
+                const end = new Date();
+                const start = new Date();
+                start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+                picker.$emit('pick', [start, end]);
+              }
+            }, {
+              text: '最近三个月',
+              onClick(picker) {
+                const end = new Date();
+                const start = new Date();
+                start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+                picker.$emit('pick', [start, end]);
+              }
+            }]
+          },
+          input1: '',
+          input2: '',
+          input3: '',
+          value6: '',
+          value7: [new Date(), new Date()],
+          selectedOptions3: ['yichang']
+        }
+      },
+      methods: {
+        handleCheckAllChange(val) {
+          this.checkedCities = val ? cityOptions : [];
+          this.isIndeterminate = false;
+        },
+        handleCheckedCitiesChange(value) {
+          let checkedCount = value.length;
+          this.checkAll = checkedCount === this.cities.length;
+          this.isIndeterminate = checkedCount > 0 && checkedCount < this.cities.length;
+        },
+        handleClick(tab, event) {
+          // console.log(tab, event);
+        },
+        dataChange(data) {
+          // var type=value
+          // console.log(data);
+        },
+        search(){
+          function cloneObj(from) {
+              return Object.keys(from)
+                  .reduce((obj, key) => (obj[key] = clone(from[key]), obj), {});
+          }
+          //数组深复制，不考虑循环引用的情况
+          function cloneArr(from) {
+              return from.map((n) => clone(n));
+          }
+          // 复制输入值
+          function clone(from) {
+              if (from instanceof Array) {
+                  return cloneArr(from);
+              } else if (from instanceof Object) {
+                  return cloneObj(from);
+              } else {
+                  return (from);
+              }
+          }
+          var citys=this.checkedCities
+          const obj2 = clone(citys);
+          console.log(obj2);
+          // console.log(citys)
+          var modelstype=this.$refs.models.value
+          const dc = clone(modelstype);
+          console.log(dc)
+
+          var starttime=this.$refs.datatime.value[0]
+          var endtime=this.$refs.datatime.value[1]
+          starttime=starttime.getFullYear() + '-' + (starttime.getMonth() + 1) + '-' + starttime.getDate()
+          endtime=endtime.getFullYear() + '-' + (endtime.getMonth() + 1) + '-' + endtime.getDate()
+          console.log(starttime)
+          console.log(endtime)
+
+          var region=this.$refs.input1.value;
+          console.log(region)
+          var ip=this.$refs.input2.value
+          console.log(ip)
+          var uniqueId=this.$refs.input3.value
+          console.log(uniqueId)
+
+        },
+      }
+    })
+  </script>
+</html>
