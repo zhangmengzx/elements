@@ -9,9 +9,8 @@
   <div id="app">
     <template>
     <div>
-      <el-input v-model="tableDataName" placeholder="请输入姓名" style="width:240px"></el-input>
-      <el-button type="primary" @click="doFilter">搜索</el-button>
-      <el-button type="primary" @click="openData">展示数据</el-button>
+      <el-input v-model="tableDataName" @keyup.enter.native="doFilter" placeholder="请输入姓名" style="width:240px"></el-input>
+      <el-button type="primary"  @click="doFilter">搜索</el-button>
       <el-table
         :data="tableDataEnd"
         border
@@ -93,6 +92,21 @@
               date: "2016-05-08",
               name: "王小虎",
               address: "上海市普陀区金沙江路 1516 弄"
+            },
+            {
+              date: "2016-05-09",
+              name: "王小虎",
+              address: "上海市普陀区金沙江路 1518 弄"
+            },
+            {
+              date: "2016-05-10",
+              name: "王小虎",
+              address: "上海市普陀区金沙江路 1518 弄"
+            },
+            {
+              date: "2016-05-11",
+              name: "王小虎",
+              address: "上海市普陀区金沙江路 1518 弄"
             }
           ],
           tableDataName: "",
@@ -106,7 +120,6 @@
       },
       created() {
         this.totalItems = this.tableDataBegin.length;
-        console.log(this.totalItems)
         if (this.totalItems > this.pageSize) {
           for (let index = 0; index < this.pageSize; index++) {
             this.tableDataEnd.push(this.tableDataBegin[index]);
@@ -142,8 +155,6 @@
           //页面初始化数据需要判断是否检索过
           this.flag=true
         },
-        openData(val) {
-        },
         handleSizeChange(val) {
           console.log(`每页 ${val} 条`);
           this.pageSize = val;
@@ -154,29 +165,19 @@
           this.currentPage = val;
           //需要判断是否检索
           if(!this.flag){
-          this.currentChangePage(this.tableDataEnd)
-
-          this.tableDataEnd = []
-          //每次手动将数据置空,因为会出现多次点击搜索情况
-          this.filterTableDataEnd=[]
-          this.tableDataBegin.forEach((value, index) => {
-            if(value.name){
-              if(value.name.indexOf(this.tableDataName)>=0){
-                this.filterTableDataEnd.push(value)
+            //每次手动将数据置空,因为会出现多次点击搜索情况
+            this.filterTableDataEnd=[]
+            this.tableDataBegin.forEach((value, index) => {
+              if(value.name){
+                if(value.name.indexOf(this.tableDataName)>=0){
+                  this.filterTableDataEnd.push(value)
+                }
               }
-            }
-          });
-          //页面数据改变重新统计数据数量和当前页
-          // this.currentPage=1
-          this.totalItems=this.filterTableDataEnd.length
-          //渲染表格,根据值\
-
-          this.currentChangePage(this.filterTableDataEnd)
-          //页面初始化数据需要判断是否检索过
-          this.flag=true
-
+            });
+            //渲染表格,根据值
+            this.currentChangePage(this.filterTableDataEnd)
           }else{
-          this.currentChangePage(this.filterTableDataEnd)
+            this.currentChangePage(this.filterTableDataEnd)
           }
         }, //组件自带监控当前页码
         currentChangePage(list) {
@@ -185,11 +186,12 @@
           this.tableDataEnd = [];
           for (; from < to; from++) {
             if (list[from]) {
-              console.log(list[from])
+              // console.log(list[from])
               this.tableDataEnd.push(list[from]);
             }
           }
-        }
+        },
+
       }
     })
   </script>
