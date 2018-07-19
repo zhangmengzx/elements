@@ -164,21 +164,29 @@
           console.log(`当前页: ${val}`);
           this.currentPage = val;
           //需要判断是否检索
+          
           if(!this.flag){
-            //每次手动将数据置空,因为会出现多次点击搜索情况
-            this.filterTableDataEnd=[]
-            this.tableDataBegin.forEach((value, index) => {
-              if(value.name){
-                if(value.name.indexOf(this.tableDataName)>=0){
-                  this.filterTableDataEnd.push(value)
-                }
-              }
-            });
-            //渲染表格,根据值
-            this.currentChangePage(this.filterTableDataEnd)
+          // this.currentChangePage(this.tableDataEnd)
+              this.currentChangePage(this.tableDataBegin)
           }else{
-            this.currentChangePage(this.filterTableDataEnd)
+              this.currentChangePage(this.filterTableDataEnd)
           }
+          
+//           if(!this.flag){
+//             //每次手动将数据置空,因为会出现多次点击搜索情况
+//             this.filterTableDataEnd=[]
+//             this.tableDataBegin.forEach((value, index) => {
+//               if(value.name){
+//                 if(value.name.indexOf(this.tableDataName)>=0){
+//                   this.filterTableDataEnd.push(value)
+//                 }
+//               }
+//             });
+//             //渲染表格,根据值
+//             this.currentChangePage(this.filterTableDataEnd)
+//           }else{
+//             this.currentChangePage(this.filterTableDataEnd)
+//           }
         }, //组件自带监控当前页码
         currentChangePage(list) {
           let from = (this.currentPage - 1) * this.pageSize;
