@@ -1,3 +1,6 @@
 /favicon.ico 404 (Not Found)
 将下面代码放入head里面
     <link rel="shortcut icon" href="#" />
+
+可输入最大长度
+maxlength="8"
