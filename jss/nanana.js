@@ -1,4 +1,16 @@
 (function(global){
+    //判断是否有网
+     function lineBoth(){
+         if(navigator.onLine){
+             console.log("链接到网络")
+         }else{
+             console.log("当前网络无链接")
+         }
+        }
+       window.setInterval("lineBoth()",100); 
+    
+    
+    
     var nagain_rc=nagain_rc || {};
  //验证Email
     nagain_rc.email = function(email) {
