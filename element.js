@@ -97,7 +97,14 @@
       open4() {
         this.$message.error('错了哦，这是一条错误消息');
       }
-    }
+    },
+     created:function(){
+      this.$notify({
+          title: '提示',
+          message: '这是一条不会自动关闭的消息',
+          duration: 0
+        });
+    }//消息提示
 
   })
 
