@@ -8,6 +8,7 @@
   });
 })(jQuery);
 // 去掉__ob__: observer  
+
     //对象深复制，不考虑循环引用的情况
     function cloneObj(from) {
         return Object.keys(from)
