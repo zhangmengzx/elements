@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    <a href="javascript:;" onClick="javascript:history.back(-1);" class="return"></a>
     //提示框开始
     // $('.alert').html('操作成功').addClass('alert-success').show().delay(1500).fadeOut();
     // $('.alert').html('操作').addClass('alert-info').show().delay(1500).fadeOut();
