@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var oldData = [{
+        city_id: 1,
+        city_name: '北京',
+        city_img:  "http://dfknbdjknvkjsfnvlkjdn.png",
+        city_country: "中国"
+    }, {
+        city_id: 2,
+        city_name: '上海',
+        city_img: "http://wergerbe.png",
+        city_country: "中国"
+    },
+        {
+            city_id: 3,
+            city_name: '广州',
+            city_img:  "http://hrthhr.png",
+
+            city_country: "中国"
+        },
+        {
+            city_id: 4,
+            city_name: '西雅图',
+            city_img:  "http://frevfd.png",
+
+            city_country: "美国"
+        },
+        {
+            city_id: 5,
+            city_name: '纽约',
+            city_img: "http://反而个.png",
+            city_country: "美国"
+        }
+    ]
+    var obj = {name:'',citys:[]};
+    var resultArr=[]; //目标数组
+    var nameArr=[]; // 名称数组
+    oldData.map(function (item,index) {
+        nameArr.push(item["city_country"]);
+    });
+    //去重
+    function uniq(array){
+        var temp = []; //一个新的临时数组
+        for(var i = 0; i < array.length; i++){
+            if(temp.indexOf(array[i]) == -1){
+                temp.push(array[i]);
+            }
+        }
+        return temp;
+    }
+    nameArr=uniq(nameArr);
+    // console.log("nameArr",nameArr);
+    nameArr.map(function (item,index) {
+        obj = {name:'',citys:[]};
+        oldData.map(function (item1,index1) {
+           if(item1["city_country"]===item){
+               delete item1["city_country"];
+               obj["citys"].push(item1);
+           }
+        });
+        obj["name"]=item;
+        resultArr.push(obj);
+    });
+    console.log("resultArr",resultArr);
+</script>
+</html>
