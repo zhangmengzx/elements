@@ -19,3 +19,9 @@ $  sudo n stable  （安装node最新版本）
 $  sudo n 8.9.4 （安装node指定版本8.9.4）
 
 5.使用node -v查看node版本，如果版本号改变为你想要的则升级成功。
+
+
+npm  Ubuntu  升级方法
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
