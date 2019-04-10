@@ -34,6 +34,8 @@
          @change="handleChange"
       ></el-cascader>
     </template>
+<!--   只能输入数字，并去掉E e   -->
+    <el-input v-model="input" type="number" placeholder="请输入内容" onkeypress="return( /[\d]/.test(String.fromCharCode(event.keyCode) ) )"></el-input>
   </div>
 
   <button type="button" class="btt" name="button">确认</button>
